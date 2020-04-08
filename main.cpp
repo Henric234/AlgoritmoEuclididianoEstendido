@@ -5,8 +5,8 @@
 using namespace std;
 
 vector<long long int> mdc(long long int a,long long int  b) {
-	long long int M, alpha, beta;
-	
+
+	bool invert;
 	vector<long long int> answer;
 	vector<long long int> r;
 	vector<long long int> q;
@@ -25,30 +25,36 @@ vector<long long int> mdc(long long int a,long long int  b) {
 	if (a >= b) {
 		r.push_back(a);
 		r.push_back(b);
+		invert = false;
 	}
 	else {
 		r.push_back(b);
 		r.push_back(a);
+		invert = true;
 	}
 	
 	for (int i = 2 ; r[i - 1] > 0 ; i++) {
 		lldiv_t divresult = lldiv( r[i-2] , r[i-1] );
 		
-		if (divresult.rem == 0) {
-			break;
-		}
 		
 		r.push_back(divresult.rem);
 		q.push_back(divresult.quot);
 		x.push_back( x[i-2] - (q[i] * x[i-1]) );
 		y.push_back( y[i-2] - (q[i] * y[i-1]) );
 
-		last_it = i;
+		last_it = i - 1;
+
 	}
 	
 	answer.push_back(r[last_it]);
-	answer.push_back(x[last_it]);
-	answer.push_back(y[last_it]);
+	if (invert == false) {
+		answer.push_back(x[last_it]);
+		answer.push_back(y[last_it]);
+	}
+	else {
+		answer.push_back(y[last_it]);
+		answer.push_back(x[last_it]);
+	}
 
 	return answer;
 }
