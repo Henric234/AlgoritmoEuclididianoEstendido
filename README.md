@@ -1,4 +1,4 @@
-# Algoritmo Eucludidiano Estendido
+# Algoritmo Euclididiano Estendido
 # Extended Euclidian Algorithm
 
 Esta é a implementação de um algoritmo prático que calcula o máximo divisor comum (mdc) e uma de suas combinacoes lineares em funcao de a e b, tal que 
