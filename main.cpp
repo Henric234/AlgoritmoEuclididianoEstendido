@@ -33,11 +33,8 @@ vector<long long int> mdc(long long int a,long long int  b) {
 	
 	for (int i = 2 ; r[i - 1] > 0 ; i++) {
 		lldiv_t divresult = lldiv( r[i-2] , r[i-1] );
-		cout << "quo: " << divresult.quot << endl;
-		cout << "re: " << divresult.rem << endl;
-
+		
 		if (divresult.rem == 0) {
-			cout << "last_it: " << endl;
 			break;
 		}
 		
@@ -66,9 +63,10 @@ int main() {
 	cout << "b: ";
 	cin >> b;
 	
-
 	answer = mdc(a, b);
-	cout << answer[0] << " " << answer[1] << " " << answer[2] << endl;
+	cout << "mdc: "<< answer[0] << endl;
+	cout << "x: " << answer[1] << endl;
+	cout << "y: " << answer[2] << endl;
 	
 	return 0;
 }
